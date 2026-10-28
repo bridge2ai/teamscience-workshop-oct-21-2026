@@ -151,7 +151,7 @@ h1, h2, h3 { line-height: 1.2; letter-spacing: -.01em; color: var(--b2ai-ink); }
 
 /* ---------- Sections ---------- */
 .section { padding: var(--space-9) 0; }
-.section-head { display: flex; flex-direction: column; gap: .5rem; margin-bottom: var(--space-6); max-width: 720px; }
+.section-head { display: flex; flex-direction: column; gap: .5rem; margin-bottom: var(--space-6); }
 .section-eyebrow {
   align-self: flex-start;
   font-size: .9375rem;
@@ -170,7 +170,7 @@ h1, h2, h3 { line-height: 1.2; letter-spacing: -.01em; color: var(--b2ai-ink); }
   letter-spacing: -.025em;
   line-height: 1.12;
 }
-.section-sub { font-size: var(--text-md); color: var(--b2ai-text-soft); max-width: 60ch; }
+.section-sub { font-size: var(--text-md); color: var(--b2ai-text-soft); }
 
 @media (max-width: 560px) {
   .section { padding: var(--space-8) 0; }
@@ -181,14 +181,14 @@ h1, h2, h3 { line-height: 1.2; letter-spacing: -.01em; color: var(--b2ai-ink); }
   list-style: none;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-4);
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-3);
 }
 .module {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  grid-template-rows: 1fr auto;
-  column-gap: var(--space-4);
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: var(--space-5);
   row-gap: var(--space-4);
   padding: 1.25rem 1.4rem;
   background: var(--b2ai-surface);
@@ -198,7 +198,7 @@ h1, h2, h3 { line-height: 1.2; letter-spacing: -.01em; color: var(--b2ai-ink); }
 }
 .module:hover { border-color: var(--b2ai-border-strong); box-shadow: 0 10px 28px #2a2aa814; }
 .module-num {
-  grid-row: 1 / span 2;
+  align-self: start;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -240,7 +240,8 @@ h1, h2, h3 { line-height: 1.2; letter-spacing: -.01em; color: var(--b2ai-ink); }
   white-space: nowrap;
 }
 
-.module-links { display: flex; flex-wrap: wrap; gap: .5rem; align-self: end; }
+.module-links { display: flex; flex-wrap: wrap; gap: .5rem; }
+.module .module-links { justify-content: flex-end; }
 .pdf-link {
   display: inline-flex;
   align-items: center;
@@ -281,12 +282,15 @@ h1, h2, h3 { line-height: 1.2; letter-spacing: -.01em; color: var(--b2ai-ink); }
 }
 .pdf-link--solid:hover { background: var(--b2ai-royal-deep); border-color: var(--b2ai-royal-deep); color: #fff; }
 
-@media (max-width: 760px) {
-  .modules { grid-template-columns: 1fr; }
+@media (max-width: 900px) {
+  .module { grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-4); }
+  .module-num { grid-row: 1 / span 2; }
+  .module .module-links { grid-column: 2; justify-content: flex-start; }
 }
 @media (max-width: 420px) {
   .module { grid-template-columns: 1fr; padding: 1.1rem 1.15rem; }
   .module-num { grid-row: auto; width: 36px; height: 36px; font-size: 1.05rem; border-radius: 10px; }
+  .module .module-links { grid-column: auto; }
 }
 
 /* ---------- Facilitators ---------- */
